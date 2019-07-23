@@ -97,7 +97,6 @@ build/freetype/builds/unix/configure:
 # that: it probably isn't possible to build on x86 now.
 build/freetype/dist/lib/libfreetype.so: build/freetype/builds/unix/configure
 	cd build/freetype && \
-	git reset --hard && \
 	patch -p1 < ../freetype-asmjs.patch && \
 	emconfigure ./configure \
 		CFLAGS="-O3" \
@@ -119,7 +118,6 @@ build/fribidi/configure:
 
 build/fribidi/dist/lib/libfribidi.so: build/fribidi/configure
 	cd build/fribidi && \
-	git reset --hard && \
 	patch -p1 < ../fribidi-make.patch && \
 	emconfigure ./configure \
 		CFLAGS=-O3 \
@@ -174,7 +172,6 @@ build/libvpx/dist/lib/libvpx.so:
 
 build/lame/dist/lib/libmp3lame.so:
 	cd build/lame && \
-	git reset --hard && \
 	patch -p1 < ../lame-configure.patch && \
 	emconfigure ./configure \
 		--prefix="$$(pwd)/dist" \
@@ -191,7 +188,6 @@ build/lame/dist/lib/libmp3lame.so:
 
 build/x264/dist/lib/libx264.so:
 	cd build/x264 && \
-	git reset --hard && \
 	patch -p1 < ../x264-configure.patch && \
 	emconfigure ./configure \
 		--prefix="$$(pwd)/dist" \
@@ -265,7 +261,6 @@ FFMPEG_COMMON_ARGS = \
 
 build/ffmpeg-webm/ffmpeg.bc: $(WEBM_SHARED_DEPS)
 	cd build/ffmpeg-webm && \
-	git reset --hard && \
 	patch -p1 < ../ffmpeg-disable-arc4random.patch && \
 	patch -p1 < ../ffmpeg-default-font.patch && \
 	patch -p1 < ../ffmpeg-disable-monotonic.patch && \
@@ -285,7 +280,6 @@ build/ffmpeg-webm/ffmpeg.bc: $(WEBM_SHARED_DEPS)
 
 build/ffmpeg-mp4/ffmpeg.bc: $(MP4_SHARED_DEPS)
 	cd build/ffmpeg-mp4 && \
-	git reset --hard && \
 	patch -p1 < ../ffmpeg-disable-arc4random.patch && \
 	patch -p1 < ../ffmpeg-disable-monotonic.patch && \
 	EM_PKG_CONFIG_PATH=$(FFMPEG_MP4_PC_PATH) emconfigure ./configure \
