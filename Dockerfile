@@ -19,7 +19,5 @@ WORKDIR /root
 #RUN git clone https://github.com/Kagami/ffmpeg.js.git
 COPY . /root/ffmpeg.js
 WORKDIR /root/ffmpeg.js
-#RUN git submodule init
-RUN git submodule update --recursive
 
 RUN cd /root/emsdk-portable/ && . ./emsdk_env.sh && cd /root/ffmpeg.js && make all
